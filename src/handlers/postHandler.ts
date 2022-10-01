@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { FileDatabase } from "../services";
 import { TimeObject } from "../types";
 
 export async function postHandler(req: Request, res: Response) {
@@ -13,5 +14,11 @@ export async function postHandler(req: Request, res: Response) {
     second: date_ob.getSeconds(),
   };
 
-  res.send(JSON.stringify(timeObject));
+  try {
+    const db = new FileDatabase();
+    const log = await db.logTime(timeObject as TimeObject);
+    res.status(200).send(JSON.stringify(timeObject));
+  } catch (error) {
+    res.sendStatus(500);
+  }
 }

@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.postHandler = void 0;
+const services_1 = require("../services");
 function postHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let now = Date.now();
@@ -22,7 +23,14 @@ function postHandler(req, res) {
             minute: date_ob.getMinutes(),
             second: date_ob.getSeconds(),
         };
-        res.send(JSON.stringify(timeObject));
+        try {
+            const db = new services_1.FileDatabase();
+            const log = yield db.logTime(timeObject);
+            res.status(200).send(JSON.stringify(timeObject));
+        }
+        catch (error) {
+            res.sendStatus(500);
+        }
     });
 }
 exports.postHandler = postHandler;
