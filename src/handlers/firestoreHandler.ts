@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, updateDoc } from "firebase/firestore";
 
@@ -12,12 +13,23 @@ const firebaseApp = initializeApp({
 });
 
 const firestore = getFirestore();
-
 const timeLog = doc(firestore, `timelogCollection/timelog`);
 
-function writeTimelog() {
+const now = Date.now();
+let date_ob = new Date(now);
+
+export async function writeTimelog(req: Request, res: Response) {
   const logData = {
-    log: "test",
+    year: date_ob.getFullYear(),
+    month: date_ob.getMonth() + 1,
+    day: date_ob.getDate(),
+    hour: date_ob.getHours(),
+    minute: date_ob.getMinutes(),
+    second: date_ob.getSeconds(),
   };
-  updateDoc(timeLog, logData);
+  try {
+    await updateDoc(timeLog, logData);
+  } catch (error) {
+    console.log(error);
+  }
 }
