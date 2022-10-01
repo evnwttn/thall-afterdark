@@ -14,7 +14,7 @@ function postHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let now = Date.now();
         let date_ob = new Date(now);
-        let dateRes = {
+        const timeObject = {
             year: date_ob.getFullYear(),
             month: date_ob.getMonth() + 1,
             day: date_ob.getDate(),
@@ -22,7 +22,7 @@ function postHandler(req, res) {
             minute: date_ob.getMinutes(),
             second: date_ob.getSeconds(),
         };
-        res.send(JSON.stringify(dateRes));
+        res.send(JSON.stringify(timeObject));
     });
 }
 exports.postHandler = postHandler;

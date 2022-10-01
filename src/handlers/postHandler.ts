@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { TimeObject } from "../types";
 
 export async function postHandler(req: Request, res: Response) {
   let now = Date.now();
   let date_ob = new Date(now);
-  let dateRes = {
+  const timeObject: TimeObject = {
     year: date_ob.getFullYear(),
     month: date_ob.getMonth() + 1,
     day: date_ob.getDate(),
@@ -12,5 +13,5 @@ export async function postHandler(req: Request, res: Response) {
     second: date_ob.getSeconds(),
   };
 
-  res.send(JSON.stringify(dateRes));
+  res.send(JSON.stringify(timeObject));
 }
