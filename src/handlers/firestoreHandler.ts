@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, updateDoc } from "firebase/firestore";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyD_LB7UtRh32wQ6mPZv6Wnp8q7EK-HIDYg",
@@ -12,3 +12,12 @@ const firebaseApp = initializeApp({
 });
 
 const firestore = getFirestore();
+
+const timeLog = doc(firestore, `timelogCollection/timelog`);
+
+function writeTimelog() {
+  const logData = {
+    log: "test",
+  };
+  updateDoc(timeLog, logData);
+}

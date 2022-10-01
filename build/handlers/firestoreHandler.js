@@ -12,4 +12,11 @@ const firebaseApp = (0, app_1.initializeApp)({
     measurementId: "G-ELKEZCLQVZ",
 });
 const firestore = (0, firestore_1.getFirestore)();
+const timeLog = (0, firestore_1.doc)(firestore, `timelogCollection/timelog`);
+function writeTimelog() {
+    const logData = {
+        log: "test",
+    };
+    (0, firestore_1.updateDoc)(timeLog, logData);
+}
 //# sourceMappingURL=firestoreHandler.js.map
