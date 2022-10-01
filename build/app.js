@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app_1 = require("firebase/app");
+const firestore_1 = require("firebase/firestore");
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
 const app = (0, express_1.default)();
@@ -18,6 +19,7 @@ const firebaseApp = (0, app_1.initializeApp)({
     appId: "1:549197004508:web:e14d810d640d9225e67e19",
     measurementId: "G-ELKEZCLQVZ",
 });
+const firestore = (0, firestore_1.getFirestore)();
 app.use(middleware_1.cors);
 app.post("/", handlers_1.postHandler);
 app.listen(port, () => {

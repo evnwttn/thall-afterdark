@@ -1,5 +1,6 @@
 import express from "express";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { cors } from "./middleware";
 import { postHandler } from "./handlers";
 
@@ -15,7 +16,10 @@ const firebaseApp = initializeApp({
   measurementId: "G-ELKEZCLQVZ",
 });
 
+const firestore = getFirestore();
+
 app.use(cors);
+
 app.post("/", postHandler);
 
 app.listen(port, () => {
