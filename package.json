@@ -18,5 +18,9 @@
   "homepage": "https://github.com/evnwttn/thall-afterdark#readme",
   "devDependencies": {
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1"
   }
 }
