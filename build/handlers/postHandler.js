@@ -11,18 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.postHandler = void 0;
 const services_1 = require("../services");
+let now = Date.now();
+let date_ob = new Date(now);
+const timeObject = {
+    year: date_ob.getFullYear(),
+    month: date_ob.getMonth() + 1,
+    day: date_ob.getDate(),
+    hour: date_ob.getHours(),
+    minute: date_ob.getMinutes(),
+    second: date_ob.getSeconds(),
+};
 function postHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        let now = Date.now();
-        let date_ob = new Date(now);
-        const timeObject = {
-            year: date_ob.getFullYear(),
-            month: date_ob.getMonth() + 1,
-            day: date_ob.getDate(),
-            hour: date_ob.getHours(),
-            minute: date_ob.getMinutes(),
-            second: date_ob.getSeconds(),
-        };
         try {
             const db = new services_1.FileDatabase();
             const log = yield db.logTime(timeObject);
