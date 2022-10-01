@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeTimelog = void 0;
+exports.firestoreHandler = void 0;
 const app_1 = require("firebase/app");
 const firestore_1 = require("firebase/firestore");
 const firebaseApp = (0, app_1.initializeApp)({
@@ -25,7 +25,7 @@ const firestore = (0, firestore_1.getFirestore)();
 const timeLog = (0, firestore_1.doc)(firestore, `timelogCollection/timelog`);
 const now = Date.now();
 let date_ob = new Date(now);
-function writeTimelog(req, res) {
+function firestoreHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const logData = {
             year: date_ob.getFullYear(),
@@ -45,5 +45,5 @@ function writeTimelog(req, res) {
         }
     });
 }
-exports.writeTimelog = writeTimelog;
+exports.firestoreHandler = firestoreHandler;
 //# sourceMappingURL=firestoreHandler.js.map

@@ -18,7 +18,7 @@ const timeLog = doc(firestore, `timelogCollection/timelog`);
 const now = Date.now();
 let date_ob = new Date(now);
 
-export async function writeTimelog(req: Request, res: Response) {
+export async function firestoreHandler(req: Request, res: Response) {
   const logData = {
     year: date_ob.getFullYear(),
     month: date_ob.getMonth() + 1,
@@ -27,6 +27,7 @@ export async function writeTimelog(req: Request, res: Response) {
     minute: date_ob.getMinutes(),
     second: date_ob.getSeconds(),
   };
+
   try {
     await updateDoc(timeLog, logData);
     res.status(200).send(JSON.stringify(logData));
