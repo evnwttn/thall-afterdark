@@ -29,7 +29,9 @@ export async function writeTimelog(req: Request, res: Response) {
   };
   try {
     await updateDoc(timeLog, logData);
+    res.status(200).send(JSON.stringify(logData));
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 }

@@ -37,9 +37,11 @@ function writeTimelog(req, res) {
         };
         try {
             yield (0, firestore_1.updateDoc)(timeLog, logData);
+            res.status(200).send(JSON.stringify(logData));
         }
         catch (error) {
             console.log(error);
+            res.sendStatus(500);
         }
     });
 }
