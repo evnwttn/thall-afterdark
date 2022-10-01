@@ -1,4 +1,5 @@
 import express from "express";
+import { cors } from "./middleware";
 import { Request, Response } from "express";
 
 const app = express();
