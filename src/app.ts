@@ -5,6 +5,8 @@ import { Request, Response } from "express";
 const app = express();
 const port = 4000;
 
+app.use(cors);
+
 app.post("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
