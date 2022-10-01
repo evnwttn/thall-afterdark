@@ -15,22 +15,10 @@ const firebaseApp = initializeApp({
 const firestore = getFirestore();
 const timeLog = doc(firestore, `timelogCollection/timelog`);
 
-const now = Date.now();
-let date_ob = new Date(now);
-
 export async function firestoreHandler(req: Request, res: Response) {
-  const logData = {
-    year: date_ob.getFullYear(),
-    month: date_ob.getMonth() + 1,
-    day: date_ob.getDate(),
-    hour: date_ob.getHours(),
-    minute: date_ob.getMinutes(),
-    second: date_ob.getSeconds(),
-  };
-
   try {
-    await updateDoc(timeLog, logData);
-    res.status(200).send(JSON.stringify(logData));
+    await updateDoc(timeLog, req.body);
+    res.status(200).send(JSON.stringify(req.body));
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

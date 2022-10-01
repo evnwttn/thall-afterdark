@@ -9,6 +9,7 @@ const handlers_1 = require("./handlers");
 const app = (0, express_1.default)();
 const port = 4000;
 app.use(middleware_1.cors);
+app.use(express_1.default.json());
 app.post("/", handlers_1.firestoreHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
