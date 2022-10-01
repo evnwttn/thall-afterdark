@@ -1,7 +1,6 @@
 import express from "express";
 import { cors } from "./middleware";
 import { postHandler } from "./handlers";
-import { Request, Response } from "express";
 
 const app = express();
 const port = 4000;
