@@ -25,13 +25,22 @@ const timeLog = doc(firestore, `timelogCollection/timelog`);
 export async function firestoreHandler(req: Request, res: Response) {
   const addNewDoc = async () => {
     const newDoc = await addDoc(timelogCollection, req.body);
+    console.log(newDoc.path);
   };
 
   try {
-    await updateDoc(timeLog, req.body);
+    await addNewDoc();
     res.status(200).send(JSON.stringify(req.body));
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
+
+  // try {
+  //   await updateDoc(timeLog, req.body);
+  //   res.status(200).send(JSON.stringify(req.body));
+  // } catch (error) {
+  //   console.log(error);
+  //   res.sendStatus(500);
+  // }
 }

@@ -28,15 +28,23 @@ function firestoreHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const addNewDoc = () => __awaiter(this, void 0, void 0, function* () {
             const newDoc = yield (0, firestore_1.addDoc)(timelogCollection, req.body);
+            console.log(newDoc.path);
         });
         try {
-            yield (0, firestore_1.updateDoc)(timeLog, req.body);
+            yield addNewDoc();
             res.status(200).send(JSON.stringify(req.body));
         }
         catch (error) {
             console.log(error);
             res.sendStatus(500);
         }
+        // try {
+        //   await updateDoc(timeLog, req.body);
+        //   res.status(200).send(JSON.stringify(req.body));
+        // } catch (error) {
+        //   console.log(error);
+        //   res.sendStatus(500);
+        // }
     });
 }
 exports.firestoreHandler = firestoreHandler;
