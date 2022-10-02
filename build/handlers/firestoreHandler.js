@@ -22,9 +22,13 @@ const firebaseApp = (0, app_1.initializeApp)({
     measurementId: "G-ELKEZCLQVZ",
 });
 const firestore = (0, firestore_1.getFirestore)();
+const timelogCollection = (0, firestore_1.collection)(firestore, "timelogCollection");
 const timeLog = (0, firestore_1.doc)(firestore, `timelogCollection/timelog`);
 function firestoreHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        const addNewDoc = () => __awaiter(this, void 0, void 0, function* () {
+            const newDoc = yield (0, firestore_1.addDoc)(timelogCollection, req.body);
+        });
         try {
             yield (0, firestore_1.updateDoc)(timeLog, req.body);
             res.status(200).send(JSON.stringify(req.body));
