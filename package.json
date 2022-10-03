@@ -27,6 +27,8 @@
     "@types/node": "^18.7.23",
     "dotenv": "^16.0.3",
     "firebase": "^9.10.0",
+    "firebase-admin": "^11.0.1",
+    "firebase-functions": "^3.24.1",
     "firebase-tools": "^11.13.0"
   }
 }

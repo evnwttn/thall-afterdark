@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { initializeApp } from "firebase/app";
+import functions from "firebase-functions";
 import {
   getFirestore,
   doc,
