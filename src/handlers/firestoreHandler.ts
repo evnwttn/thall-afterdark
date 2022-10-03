@@ -20,8 +20,8 @@ const firebaseApp = initializeApp({
 });
 
 const firestore = getFirestore();
-const timelogCollection = collection(firestore, "timelogCollection");
-// const timeLog = doc(firestore, `timelogCollection/timelog`);
+const timelogCollection = collection(firestore, `timelogCollection/`);
+const timeLog = doc(firestore, `timelogCollection/timelog`);
 
 export async function firestoreHandler(req: Request, res: Response) {
   let newDoc;
