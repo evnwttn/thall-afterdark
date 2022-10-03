@@ -23,8 +23,9 @@ const timelogCollection = collection(firestore, "timelogCollection");
 // const timeLog = doc(firestore, `timelogCollection/timelog`);
 
 export async function firestoreHandler(req: Request, res: Response) {
+  let newDoc;
   const addNewDoc = async () => {
-    const newDoc = await addDoc(timelogCollection, req.body);
+    let newDoc = await addDoc(timelogCollection, req.body);
     // return newDoc.path;
   };
 

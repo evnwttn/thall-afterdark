@@ -26,6 +26,7 @@
     "@types/express": "^4.17.14",
     "@types/node": "^18.7.23",
     "dotenv": "^16.0.3",
-    "firebase": "^9.10.0"
+    "firebase": "^9.10.0",
+    "firebase-tools": "^11.13.0"
   }
 }
